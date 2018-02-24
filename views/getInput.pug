@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  script(src="/javascripts/jquery-3.2.1.min.js")
+  script(src="/javascripts/ajax.js")
+  div(class="w3-container")
+    header(class="w3-container w3-center w3-teal")
+      h1 Web Compilers
+  div(class="w3-row")
+    div(class="w3-col s6 w3-padding")
+        div(class="w3-container  w3-border w3-light-grey")
+            header(class="w3-container")
+                h4 Compilador:
+                select(class="w3-select" name="comp" id="comp")
+                    option(value="1") wc - "Word Count"
+                    option(value="2") soma on/off
+                    option(value="3") XML
+                    option(value="4") Questionários
+                    option(value="5") Questionários (c)
+        div(class="w3-container  w3-border w3-light-grey")
+            header(class="w3-container")
+                h4 Input:
+        div(class="w3-container w3-border")
+            textarea(rows="10" cols="50" class="w3-input" placeholder="Input here..." name="intext" id="intext")  
+            div(class="w3-bar w3-pale-green")
+              div(class="w3-bar-item w3-button" id="proc") Processar
+              div(class="w3-bar-item w3-button" id="novo") Novo
+    div(class="w3-col s6 w3-padding")
+        div(class="w3-container w3-border w3-light-grey")
+            header(class="w3-container")
+                h4 Resultado:
+        div(class="w3-code w3-border" id="resultado")
+        div(class="w3-button w3-teal" id="limpa") Limpar resultados
+  div(class="w3-container")
+    footer(class="w3-container w3-teal")
+      address Gerado por WebCompilers :: jcr :: 2018-Janeiro
