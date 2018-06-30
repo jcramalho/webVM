@@ -65,14 +65,21 @@ Command
               }
               SP-- 
               Memory.push({inst: "div"}) }
-  / "mod" _ { var op1=Stack.pop(); var op2=Stack.pop(); Stack.push(op2%op1); SP-- }
+  / "mod" _ { var op1=Stack.pop(); var op2=Stack.pop(); Stack.push(op2.value%op1.value); SP-- }
   / "not" _ { line++
               var top=Stack.pop()
               if(top.type != "integer"){
                 errorList.push("Error line " + line + ": not - trying to negate non integer!")
               } 
               Stack.push({type: "boolean", value: (top.value==0?1:0)}) }
-  / "inf" _ { var op1=Stack.pop(); var op2=Stack.pop(); Stack.push((op2<op1)?1:0); SP-- }
+  / "inf" _ { line++
+              var op1=Stack.pop()
+              var op2=Stack.pop()
+              if((op1.type != "integer")||(op2.type != "integer")){
+                errorList.push("Error line " + line + ": inf - trying to compare non integer!")
+              } 
+              Stack.push({type: "boolean", value: ((op2.value<op1.value)?1:0)})
+              SP-- }
   / "infeq" _ { var op1=Stack.pop(); var op2=Stack.pop(); Stack.push((op2<=op1)?1:0); SP-- }
   / "sup" _ { var op1=Stack.pop(); var op2=Stack.pop(); Stack.push((op2>op1)?1:0); SP-- }
   / "supeq" _ { var op1=Stack.pop(); var op2=Stack.pop(); Stack.push((op2>=op1)?1:0); SP-- }
