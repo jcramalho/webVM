@@ -119,3 +119,9 @@ Integer "integer"
 _ "whitespace"
   = [ \t\n\r]*
               
+
+    // padd - memória de dados, na stack, usado para os arrays
+    // alloc - é preciso ter um apontador interno para a primeira posição livre, PPL
+    // start: fp=sp
+    // psha: usada para colocar o endereço de funções na stack
+
